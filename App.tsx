@@ -1,31 +1,27 @@
-
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import ContactsPage from './pages/ContactsPage';
-import AIConsultantPage from './pages/AIConsultantPage'; // Import the new AI Consultant Page
+import { Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import './styles/pages.css';
 
-const App: React.FC = () => {
-  return (
-    <HashRouter>
-      <div className="flex flex-col min-h-screen bg-secondary">
-        <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/ai-consultant" element={<AIConsultantPage />} /> {/* Add new route for AI Consultant */}
-            <Route path="/contacts" element={<ContactsPage />} />
-            {/* Future routes can be added here */}
-          </Routes>
-        </main>
-        <Footer />
+const App: React.FC = () => (
+  <div className="app-root">
+    <Nav />
+    <main className="main-container">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </main>
+    <footer className="site-footer">
+      <div className="container">
+        <p>© {new Date().getFullYear()} KaCert — Всички права запазени.</p>
       </div>
-    </HashRouter>
-  );
-};
+    </footer>
+  </div>
+);
 
 export default App;
