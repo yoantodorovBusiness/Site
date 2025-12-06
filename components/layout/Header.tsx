@@ -1,6 +1,6 @@
+
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { LeafIcon } from '../ui/IconComponents';
 
 const Header: React.FC = () => {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -13,10 +13,17 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-green-100">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-100 to-green-50 rounded-full group-hover:from-green-200 group-hover:to-green-100 transition-all shadow-sm border border-green-100">
-            <LeafIcon className="w-6 h-6 text-primary" />
-          </div>
+        <Link to="/" className="flex items-center gap-3 group">
+          {/* Logo Image loaded from public directory */}
+          <img 
+            src="/logo.png" 
+            alt="KaCert Logo" 
+            className="h-16 w-auto object-contain"
+            onError={(e) => {
+              console.warn("Logo image not found at /logo.png. Please ensure the file is in the 'public' folder.");
+              e.currentTarget.style.display = 'none';
+            }}
+          />
           <div className="flex flex-col justify-center">
              <span className="text-2xl font-bold tracking-tight leading-none">
                 <span className="text-primary-dark">Ka</span>
@@ -46,10 +53,16 @@ const Header: React.FC = () => {
                 Контакти
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/logo" className={navLinkClasses}>
+                ЛОГО
+              </NavLink>
+            </li>
           </ul>
         </nav>
-        {/* Mobile menu placeholder - can be expanded if needed */}
-        <div className="md:hidden flex items-center">
+        {/* Mobile menu placeholder */}
+        <div className="md:hidden flex items-center space-x-4">
+           <NavLink to="/logo" className="text-primary font-medium text-sm">Лого</NavLink>
            <NavLink to="/contacts" className="text-primary font-medium text-sm">Меню</NavLink>
         </div>
       </div>

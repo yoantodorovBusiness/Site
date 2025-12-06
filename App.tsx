@@ -6,7 +6,8 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import ContactsPage from './pages/ContactsPage';
-import AIConsultantPage from './pages/AIConsultantPage'; // Import the new AI Consultant Page
+import AIConsultantPage from './pages/AIConsultantPage';
+import LogoPage from './pages/LogoPage'; // Import the new Logo Page
 
 const App: React.FC = () => {
   return (
@@ -17,9 +18,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/ai-consultant" element={<AIConsultantPage />} /> {/* Add new route for AI Consultant */}
+            <Route path="/ai-consultant" element={<AIConsultantPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
-            {/* Future routes can be added here */}
+            <Route path="/logo" element={<LogoPage />} /> {/* Add new route for Logo */}
           </Routes>
         </main>
         <Footer />
